@@ -1,30 +1,44 @@
 [
-  {  
-    "args":[    
-      ""
-    ],
-    "exec":"alb_unhealthyCheck.py",
-    "skip_arguments":true
+  {
+      "args": [
+          ""
+      ],
+      "exec": "check-container-logs.rb",
+      "skip_arguments": true
   },
-  {  
-    "args":[    
-      ""
-    ],
-    "exec":"check_aws_events.py",
-    "skip_arguments":true
+  {
+      "args": [
+          ""
+      ],
+      "exec": "check-container.rb",
+      "skip_arguments": true
   },
-  {  
-    "args":[    
-      ""
-    ],
-    "exec":"check-aws-vpn.py",
-    "skip_arguments":true
+  {
+      "args": [
+          ""
+      ],
+      "exec": "check-docker-container.rb",
+      "skip_arguments": true
   },
-  {  
-    "args":[    
-      ""
-    ],
-    "exec":"nagios-check-aws-ec2-backup",
-    "skip_arguments":true
+  {
+      "args": [
+          ""
+      ],
+      "exec": "metrics-docker-container.rb",
+      "skip_arguments": true
+  },
+  {
+      "args": [
+          ""
+      ],
+      "exec": "metrics-docker-info.rb",
+      "skip_arguments": true
+  },
+  {
+      "args": [
+          ""
+      ],
+      "exec": "metrics-docker-stats.rb",
+      "skip_arguments": true
   }
 ]
