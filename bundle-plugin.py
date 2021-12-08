@@ -46,10 +46,10 @@ args = parser.parse_args()
 
 if not args.user or not args.instance or not args.keyfile:
     parser.print_help()
-    sys.exit(1) 
+    sys.exit(1)
 
 # Set the request parameters
-url = 'https://'+args.instance+'/api/x_snc_pluggy/pluggy/plugin'
+url = 'https://'+args.instance+'/api/x_opti8_acc_plugin/ingest_acc_plugin_pipeline/plugin'
 signingKeyFile=args.keyfile
 
 # user from args
@@ -103,7 +103,7 @@ except Exception as e:
 
 # encode the signature
 try:
-    f=open(b64SigFile,'w') 
+    f=open(b64SigFile,'w')
     (subprocess.run(["base64",sigFile],stdout=f)).check_returncode()
     f.close()
 except Exception as e:
@@ -144,6 +144,6 @@ for optKey in optionalKeys:
 response = requests.post(url, auth=(user, pwd), headers=headers,json=requestJson)
 
 # Check for HTTP codes other than 200
-if response.status_code != 200: 
+if response.status_code != 200:
     logging.warn('Status:', response.status_code, 'Headers:', response.headers, 'Error Response:',response.json())
     sys.exit(10)
