@@ -145,5 +145,5 @@ response = requests.post(url, auth=(user, pwd), headers=headers,json=requestJson
 
 # Check for HTTP codes other than 200
 if response.status_code != 200:
-    logging.warn('Status:', response.status_code, 'Headers:', response.headers, 'Error Response:',response.json())
+    logging.warning('Status:', response.status_code, 'Headers:', response.headers, 'Error Response:',response.json())
     sys.exit(10)
