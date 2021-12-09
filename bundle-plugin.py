@@ -10,6 +10,8 @@ import requests
 import subprocess
 import sys
 
+from requests.models import HTTPBasicAuth
+
 # bundle up an ACC plugin
 
 # standard metadata file
@@ -141,7 +143,7 @@ for optKey in optionalKeys:
         requestJson[optKey]=metaDataJson[optKey]
 
 # Do the HTTP request
-response = requests.post(url, auth=(user, pwd), headers=headers,json=requestJson)
+response = requests.post(url, auth=HTTPBasicAuth(user, pwd), headers=headers, json=requestJson)
 
 # Check for HTTP codes other than 200
 if response.status_code != 200:
