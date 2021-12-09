@@ -149,8 +149,10 @@ for optKey in optionalKeys:
 # Do the HTTP request
 response = requests.post(url, headers=headers, json=requestJson)
 
+logging.info("Authorization: " + "Basic " + authHeaderStr)
+logging.info("headers")
+logging.info(headers)
 # Check for HTTP codes other than 200
 if response.status_code != 200:
     logging.warning('Status:', response.status_code, 'Headers:', response.headers, 'Error Response:',response.json())
-    logging.warning('Authorization: ', "Basic " + authHeaderStr)
     sys.exit(11)
