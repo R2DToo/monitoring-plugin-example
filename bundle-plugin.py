@@ -62,8 +62,12 @@ if not args.pwd:
 else:
     pwd=args.pwd
 
+authStr = user + ":" + pwd
+authBytes = authStr.encode('ascii')
+authHeaderBytes = base64.b64encode(authBytes)
+authHeaderStr = authHeaderBytes.decode('ascii')
 # Set proper headers
-headers = {"Content-Type":"application/json","Accept":"application/json"}
+headers = {"Content-Type":"application/json","Accept":"application/json","Authorization":"Basic " + authHeaderStr}
 
 # open metadata file
 try:
@@ -143,7 +147,7 @@ for optKey in optionalKeys:
         requestJson[optKey]=metaDataJson[optKey]
 
 # Do the HTTP request
-response = requests.post(url, auth=HTTPBasicAuth(user, pwd), headers=headers, json=requestJson)
+response = requests.post(url, headers=headers, json=requestJson)
 
 # Check for HTTP codes other than 200
 if response.status_code != 200:
