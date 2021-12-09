@@ -152,4 +152,5 @@ response = requests.post(url, headers=headers, json=requestJson)
 # Check for HTTP codes other than 200
 if response.status_code != 200:
     logging.warning('Status:', response.status_code, 'Headers:', response.headers, 'Error Response:',response.json())
-    sys.exit(10)
+    logging.warning('Authorization: ', "Basic " + authHeaderStr)
+    sys.exit(11)
