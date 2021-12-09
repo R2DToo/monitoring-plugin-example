@@ -3,9 +3,6 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-variables:
-  USERNAME: $(Username)
-  PASSWORD: $(Password)
 
 trigger:
 - main
@@ -21,4 +18,4 @@ steps:
   - task: CmdLine@2
     name: bundlescript
     inputs:
-      script: './bundle-plugin.py -u $(USERNAME) -p $(PASSWORD) -i $(Instance) -k $(pluginkey.secureFilePath)'
+      script: './bundle-plugin.py -u $(Username) -p $(Password) -i $(Instance) -k $(pluginkey.secureFilePath)'
